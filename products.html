@@ -1,0 +1,110 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品中心 - 江发精密钣金</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff6b35'/><text x='50' y='68' font-size='50' font-weight='bold' text-anchor="middle" fill="white" font-family="sans-serif">JF</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">JF</div>
+      <span>江发精密钣金</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于江发</a></li>
+      <li><a href="products.html" class="active">产品中心</a></li>
+      <li><a href="cases.html">公司实力</a></li>
+      <li><a href="news.html">新闻中心</a></li>
+      <li><a href="contact.html">联系我们</a></li>
+      <li><a href="contact.html" class="nav-cta">获取报价</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- 页面头部 -->
+<div class="page-header">
+  <div class="container">
+    <h1>产品中心</h1>
+    <p>14大产品系列，满足各行业钣金加工需求，支持来图来样定制</p>
+  </div>
+</div>
+
+<!-- 产品列表 -->
+<section class="section">
+  <div class="container">
+    <div class="product-tabs" id="productTabs"></div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>江发精密钣金</h3>
+        <p>专注精密钣金加工28年，为国内制造企业提供高品质、高效率的钣金定制解决方案。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">关于江发</a></li>
+          <li><a href="products.html">产品中心</a></li>
+          <li><a href="cases.html">公司实力</a></li>
+          <li><a href="news.html">新闻中心</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>产品服务</h4>
+        <ul>
+          <li><a href="products.html">激光切割</a></li>
+          <li><a href="products.html">设备钣金</a></li>
+          <li><a href="products.html">机箱机柜</a></li>
+          <li><a href="products.html">机架焊接</a></li>
+          <li><a href="products.html">表面处理</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>联系方式</h4>
+        <ul>
+          <li>电话：0760-2212-0402</li>
+          <li>邮箱：2632001262@qq.com</li>
+          <li>地址：广东省中山市小榄镇宝丰宝诚路7号2幢</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 中山市江发智能科技有限公司 版权所有 | 粤ICP备XXXXXXXX号</p>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btn">
+  <div class="float-phone" onclick="showToast('拨打电话：0760-2212-0402')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderTabs('productTabs');
+    renderProducts('all', 'productGrid');
+  });
+</script>
+</body>
+</html>
