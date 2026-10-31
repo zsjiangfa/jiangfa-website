@@ -23,6 +23,7 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+
 /* ===== 导航栏 ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -76,6 +77,7 @@ img { max-width: 100%; display: block; }
   color: var(--white); cursor: pointer;
 }
 
+
 /* ===== 页面头部（子页面通用） ===== */
 .page-header {
   padding: 120px 0 60px;
@@ -94,6 +96,7 @@ img { max-width: 100%; display: block; }
 }
 .section-header h2 { font-size: 32px; color: var(--primary); margin-top: 8px; }
 .section-header p { color: var(--gray); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
 
 /* ===== Hero 首页 ===== */
 .hero {
@@ -148,6 +151,7 @@ img { max-width: 100%; display: block; }
   width: 600px; height: 600px; opacity: 0.1;
 }
 
+
 /* ===== 优势条 ===== */
 .advantages { background: var(--light); padding: 60px 0; }
 .adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
@@ -163,6 +167,7 @@ img { max-width: 100%; display: block; }
 .adv-icon svg { width: 28px; height: 28px; color: var(--primary); }
 .adv-item h3 { font-size: 17px; color: var(--primary); margin-bottom: 8px; }
 .adv-item p { font-size: 14px; color: var(--gray); }
+
 
 /* ===== 产品卡片 ===== */
 .product-tabs {
@@ -204,6 +209,7 @@ img { max-width: 100%; display: block; }
 .product-info { padding: 20px; }
 .product-info h3 { font-size: 16px; color: var(--primary); margin-bottom: 8px; }
 .product-info p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
 
 /* ===== 报价CTA ===== */
 .quote-cta {
@@ -255,7 +261,8 @@ img { max-width: 100%; display: block; }
 .case-info { position: relative; z-index: 2; padding: 24px; color: var(--white); width: 100%; }
 .case-info .industry { font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 1px; }
 .case-info h3 { font-size: 18px; margin-top: 6px; }
-.case-info p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 8px; }/* ===== 关于我们 ===== */
+.case-info p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 8px; }
+/* ===== 关于我们 ===== */
 .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
 .about-content p { color: var(--gray); line-height: 2; margin-bottom: 20px; font-size: 16px; }
 .about-features {
@@ -291,6 +298,7 @@ img { max-width: 100%; display: block; }
 .timeline-content h4 { font-size: 16px; color: var(--primary); margin-bottom: 4px; }
 .timeline-content p { font-size: 14px; color: var(--gray); }
 
+
 /* ===== 新闻中心 ===== */
 .news-list { max-width: 800px; margin: 0 auto; }
 .news-item {
@@ -312,6 +320,7 @@ img { max-width: 100%; display: block; }
   margin-top: 8px; font-weight: 600;
 }
 
+
 /* ===== 联系我们 ===== */
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .contact-info h2 { font-size: 28px; color: var(--primary); margin-bottom: 16px; }
@@ -330,6 +339,7 @@ img { max-width: 100%; display: block; }
 }
 .contact-form-box h3 { font-size: 20px; color: var(--primary); margin-bottom: 20px; }
 
+
 /* ===== 页脚 ===== */
 .footer { background: #0a1a2e; padding: 60px 0 30px; color: rgba(255,255,255,0.6); }
 .footer-inner {
@@ -347,6 +357,7 @@ img { max-width: 100%; display: block; }
   padding-top: 24px; text-align: center; font-size: 13px;
 }
 
+
 /* ===== 浮动按钮 ===== */
 .float-btn { position: fixed; right: 24px; bottom: 24px; z-index: 999; }
 .float-phone {
@@ -358,6 +369,7 @@ img { max-width: 100%; display: block; }
 .float-phone:hover { transform: scale(1.1); }
 .float-phone svg { width: 24px; height: 24px; color: var(--white); }
 
+
 /* ===== Toast ===== */
 #toast {
   position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
@@ -365,6 +377,7 @@ img { max-width: 100%; display: block; }
   padding: 12px 24px; border-radius: 8px; z-index: 9999;
   display: none; font-size: 14px;
 }
+
 
 /* ===== 响应式平板端 ===== */
 @media (max-width: 968px) {
@@ -412,6 +425,8 @@ img { max-width: 100%; display: block; }
   .quote-form, .contact-form-box { padding: 24px; }
   .about-content p { font-size: 15px; }
 }
+
+
 
 /* ===== 响应式手机端 ===== */
 @media (max-width: 640px) {
@@ -527,6 +542,7 @@ img { max-width: 100%; display: block; }
   #toast { top: 70px; font-size: 13px; padding: 10px 18px; }
 }
 
+
 /* ===== 超小屏（<380px） ===== */
 @media (max-width: 380px) {
   .hero h1 { font-size: 22px; }
@@ -534,6 +550,7 @@ img { max-width: 100%; display: block; }
   .section-header h2 { font-size: 20px; }
   .product-img { height: 160px; }
 }
+
 
 /* ===== 设备轮播图 ===== */
 .equipment-slider {
@@ -614,6 +631,7 @@ img { max-width: 100%; display: block; }
 }
 .slider-dot.active { background: var(--accent); }
 
+
 /* ===== 图片占位符通用样式 ===== */
 .img-placeholder {
   background: linear-gradient(135deg, #e8eef5, #d5e0ed);
@@ -629,6 +647,43 @@ img { max-width: 100%; display: block; }
 }
 
 
+
+
+/* ===== 页面Hero大图 ===== */
+.page-hero-img {
+  width: 100%;
+  padding-top: -72px; 
+  line-height: 0;
+}
+.page-hero-img .img-placeholder {
+  border-radius: 0;
+  width: 100%;
+  height: auto; 
+  aspect-ratio: 1920 / 600;
+}
+
+@media (max-width: 640px) {
+  .page-hero-img {
+    padding-top: 60px; 
+  }
+  .page-hero-img .img-placeholder {
+    aspect-ratio: 750 / 420;
+  }
+}
+/* ===== 关于页门面图布局 ===== */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-img-box {
+  height: 360px;
+}
+.about-img-box .img-placeholder {
+  width: 100%;
+  height: 100%;
+}
 
 /* ===== 加工工艺板块 ===== */
 .process-grid {
@@ -669,6 +724,7 @@ img { max-width: 100%; display: block; }
   color: var(--gray);
   line-height: 1.7;
 }
+
 
 /* ===== 公司实力数字 ===== */
 .strength-stats {
@@ -752,26 +808,3 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }
-
-/* ===== 页面Hero大图（全局作用域） ===== */
-.page-hero-img {
-  padding-top: 72px; / 桌面端，等于导航栏高度 /
-  width: 100%;
-  line-height: 0;
-}
-
-.page-hero-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-@media (max-width: 640px) {
-  .page-hero-img {
-    padding-top: 60px; / 手机端，等于手机导航栏高度 /
-  }
-}
- img {
-     max-width: 100%;
-     height: auto;
-   }
