@@ -757,6 +757,7 @@ img { max-width: 100%; display: block; }
   .strength-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .strength-num { font-size: 32px; }
 }
+
 @media (max-width: 640px) {
   .slider-slide { height: 220px; }
   .slider-btn { width: 36px; height: 36px; }
@@ -768,6 +769,7 @@ img { max-width: 100%; display: block; }
   .strength-num { font-size: 26px; }
   .strength-label { font-size: 13px; }
 }
+
 .hero-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -779,10 +781,14 @@ img { max-width: 100%; display: block; }
   text-align: center;
   box-sizing: border-box;
 }
+
 @media (max-width: 480px) {
   .hero-buttons {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== 页面Hero大图（全局作用域） ===== */
 .page-hero-img {
   margin-top: -88px;
   margin-bottom: 0;
@@ -795,5 +801,4 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: auto;
   display: block;
-}
 }
