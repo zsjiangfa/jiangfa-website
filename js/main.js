@@ -1,4 +1,4 @@
-// ===== 产品数据 =====
+﻿// ===== 产品数据 =====
 const PRODUCT_CATEGORIES = [
   { id: 'all', name: '全部' },
   { id: 'appliance', name: '家电钣金系列' },
@@ -17,16 +17,16 @@ const PRODUCT_CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { cat: 'appliance', name: '空调外机钣金外壳', desc: '空调外机专用钣金件，耐候性强，表面喷塑处理，厚度1.0-1.5mm', tag: '热销' },
-  { cat: 'appliance', name: '洗衣机内桶支架', desc: '洗衣机内部支撑结构件，高强度冷轧钢板，冲压折弯成型', tag: '' },
-  { cat: 'appliance', name: '烤箱门框钣金', desc: '烤箱门框钣金件，耐高温喷涂，平整度高', tag: '' },
-  { cat: 'appliance', name: '冰箱侧板钣金', desc: '冰箱侧板钣金件，精度高，表面无划痕', tag: '定制' },
-  { cat: 'medical', name: '医疗检测仪外壳', desc: '医疗设备专用外壳，符合GMP洁净要求，表面拉丝处理', tag: '定制' },
-  { cat: 'medical', name: '监护仪钣金结构件', desc: '监护仪内部钣金支架，精密折弯，公差±0.1mm', tag: '' },
-  { cat: 'medical', name: '医用推车钣金件', desc: '医用推车车身钣金，不锈钢材质，防锈耐腐蚀', tag: '' },
-  { cat: 'cnc', name: 'CNC精密铝合金件', desc: '五轴联动CNC加工，公差可达±0.02mm，铝合金材质', tag: '主推' },
-  { cat: 'cnc', name: 'CNC不锈钢加工件', desc: '不锈钢CNC车铣加工，适用于高端设备结构件', tag: '' },
-  { cat: 'cnc', name: 'CNC铜件精密加工', desc: '铜材CNC精密加工，导电性好，适用于电子连接器', tag: '' },
+  { cat: 'appliance', name: '裁床设备机座框架', desc: '裁床设备机座框架，尺寸2000*4000，孔位装配要求高，表面烤漆处理，厚度3.0-20.0mm', tag: '热销', img: 'IMG_E9561.JPG' },
+  { cat: 'appliance', name: '洗衣机内桶支架', desc: '洗衣机内部支撑结构件，高强度冷轧钢板，冲压折弯成型', tag: '', img: 'product-2.jpg' },
+  { cat: 'appliance', name: '烤箱门框钣金', desc: '烤箱门框钣金件，耐高温喷涂，平整度高', tag: '', img: 'product-3.jpg' },
+  { cat: 'appliance', name: '冰箱侧板钣金', desc: '冰箱侧板钣金件，精度高，表面无划痕', tag: '定制', img: 'product-4.jpg' },
+  { cat: 'medical', name: '医疗检测仪外壳', desc: '医疗设备专用外壳，符合GMP洁净要求，表面拉丝处理', tag: '定制', img: 'product-5.jpg' },
+  { cat: 'medical', name: '监护仪钣金结构件', desc: '监护仪内部钣金支架，精密折弯，公差±0.1mm', tag: '', img: 'product-6.jpg' },
+  { cat: 'medical', name: '医用推车钣金件', desc: '医用推车车身钣金，不锈钢材质，防锈耐腐蚀', tag: '', img: 'product-7.jpg' },
+  { cat: 'cnc', name: 'CNC精密铝合金件', desc: '五轴联动CNC加工，公差可达±0.02mm，铝合金材质', tag: '主推', img: 'product-8.jpg' },
+  { cat: 'cnc', name: 'CNC不锈钢加工件', desc: '不锈钢CNC车铣加工，适用于高端设备结构件', tag: '', img: 'product-9.jpg' },
+ { cat: 'cnc', name: 'CNC铜件精密加工', desc: '铜材CNC精密加工，导电性好，适用于电子连接器', tag: '' },
   { cat: 'hardware', name: '精密五金冲压件', desc: '五金冲压件，批量生产，一致性好', tag: '' },
   { cat: 'hardware', name: '弹性五金弹片', desc: '不锈钢弹片冲压，弹性好，寿命长', tag: '' },
   { cat: 'hardware', name: '五金连接件', desc: '各类五金连接片、固定片，来图定制', tag: '' },
@@ -57,6 +57,7 @@ const PRODUCTS = [
   { cat: 'metal', name: '不锈钢展示架', desc: '不锈钢展示架，拉丝处理，美观耐用', tag: '' },
   { cat: 'metal', name: '金属工具箱', desc: '金属工具箱钣金，定制尺寸，锁扣设计', tag: '' },
   { cat: 'metal', name: '金属通风口盖板', desc: '通风口盖板，冲孔加工，镀锌材质', tag: '' },
+];
 ];
 
 // ===== 案例数据 =====
@@ -109,6 +110,8 @@ function submitContact(e) {
   e.target.reset();
 }
 
+
+
 // ===== 产品渲染 =====
 function renderProducts(filter, containerId) {
   const container = document.getElementById(containerId);
@@ -116,14 +119,20 @@ function renderProducts(filter, containerId) {
   const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
   container.innerHTML = list.map(p => {
     const idx = PRODUCTS.indexOf(p);
+    
+    // 核心判断：如果数据里有 img 属性，就渲染图片，否则渲染原本的 SVG 占位图
+    const imgHtml = p.img 
+      ? `<img src="images/${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="3" y="3" width="18" height="18" rx="2"/>
+           <path d="M3 9h18M9 21V9"/>
+         </svg>`;
+
     return `
     <div class="product-card" onclick="location.href='product-detail.html?id=${idx}'">
       <div class="product-img">
         ${p.tag ? '<span class="product-tag">' + p.tag + '</span>' : ''}
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <path d="M3 9h18M9 21V9"/>
-        </svg>
+        ${imgHtml}
       </div>
       <div class="product-info">
         <h3>${p.name}</h3>
@@ -133,6 +142,9 @@ function renderProducts(filter, containerId) {
   `;
   }).join('');
 }
+
+
+
 
 function renderTabs(containerId) {
   const container = document.getElementById(containerId);

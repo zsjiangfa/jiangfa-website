@@ -227,21 +227,26 @@
   document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('homeProductGrid');
     const list = PRODUCTS.slice(0, 9);
-    container.innerHTML = list.map((p, i) => `
+    container.innerHTML = list.map((p, i) => {
+      const imgHtml = p.img 
+        ? `<img src="images/${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+             <rect x="3" y="3" width="18" height="18" rx="2"/>
+             <path d="M3 9h18M9 21V9"/>
+           </svg>`;
+      
+      return `
       <div class="product-card" onclick="location.href='product-detail.html?id=${i}'">
         <div class="product-img">
           ${p.tag ? '<span class="product-tag">' + p.tag + '</span>' : ''}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18M9 21V9"/>
-          </svg>
+          ${imgHtml}
         </div>
         <div class="product-info">
           <h3>${p.name}</h3>
           <p>${p.desc}</p>
         </div>
       </div>
-    `).join('');
+    `}).join('');
   });
 </script>
 </body>
