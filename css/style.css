@@ -239,8 +239,7 @@ img { max-width: 100%; display: block; }
 .form-submit:hover { background: var(--accent-dark); }
 .form-note { text-align: center; font-size: 12px; color: var(--gray); margin-top: 10px; }
 
-/* ===== 成功案例 ===== */
-.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+/* ===== 成功案例 ===== */.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .case-card {
   border-radius: 12px; overflow: hidden;
   position: relative; height: 280px;
@@ -256,9 +255,7 @@ img { max-width: 100%; display: block; }
 .case-info { position: relative; z-index: 2; padding: 24px; color: var(--white); width: 100%; }
 .case-info .industry { font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 1px; }
 .case-info h3 { font-size: 18px; margin-top: 6px; }
-.case-info p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 8px; }
-
-/* ===== 关于我们 ===== */
+.case-info p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 8px; }/* ===== 关于我们 ===== */
 .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
 .about-content p { color: var(--gray); line-height: 2; margin-bottom: 20px; font-size: 16px; }
 .about-features {
@@ -786,4 +783,9 @@ img { max-width: 100%; display: block; }
   .hero-buttons {
     grid-template-columns: 1fr;
   }
+}.page-hero-img {
+  margin-top: -0px; / 负值上移，正好盖住导航栏的高度 /
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 0;
 }
