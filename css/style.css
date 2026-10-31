@@ -755,15 +755,19 @@ img { max-width: 100%; display: block; }
 
 /* ===== 页面Hero大图（全局作用域） ===== */
 .page-hero-img {
-  margin-top: -88px;
-  margin-bottom: 0;
-  padding: 0;
-  line-height: 0;
+  padding-top: 72px; / 桌面端，等于导航栏高度 /
   width: 100%;
+  line-height: 0;
 }
 
 .page-hero-img img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (max-width: 640px) {
+  .page-hero-img {
+    padding-top: 60px; / 手机端，等于手机导航栏高度 /
+  }
 }
