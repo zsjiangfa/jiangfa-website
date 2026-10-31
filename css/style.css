@@ -652,22 +652,50 @@ img { max-width: 100%; display: block; }
 /* ===== 页面Hero大图 ===== */
 .page-hero-img {
   width: 100%;
-  padding-top: -72px; 
+  margin: 0;
+  padding: 0;
   line-height: 0;
+  overflow: hidden;
+  padding-top: 72px;
 }
-.page-hero-img .img-placeholder {
-  border-radius: 0;
+
+.page-hero-img img {
+  display: block;
   width: 100%;
-  height: auto; 
-  aspect-ratio: 1920 / 600;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  object-fit: cover;
+  max-height: 600px;
+  object-position: center;
+}
+
+@media (max-width: 968px) {
+  .page-hero-img {
+    padding-top: 72px;
+  }
+  .page-hero-img img {
+    max-height: 400px;
+  }
 }
 
 @media (max-width: 640px) {
   .page-hero-img {
-    padding-top: 60px; 
+    padding-top: 60px;
   }
-  .page-hero-img .img-placeholder {
-    aspect-ratio: 750 / 420;
+  .page-hero-img img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .page-hero-img img {
+    max-height: 200px;
   }
 }
 /* ===== 关于页门面图布局 ===== */
