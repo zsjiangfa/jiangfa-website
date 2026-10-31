@@ -783,15 +783,17 @@ img { max-width: 100%; display: block; }
   .hero-buttons {
     grid-template-columns: 1fr;
   }
-}.page-hero-img {
+.page-hero-img {
   margin-top: -88px;
   margin-bottom: 0;
   padding: 0;
   line-height: 0;
+  width: 100%;
 }
 
 .page-hero-img img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
+}
 }
