@@ -771,3 +771,7 @@ img { max-width: 100%; display: block; }
     padding-top: 60px; / 手机端，等于手机导航栏高度 /
   }
 }
+ img {
+     max-width: 100%;
+     height: auto;
+   }
