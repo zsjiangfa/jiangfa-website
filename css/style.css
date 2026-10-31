@@ -647,57 +647,6 @@ img { max-width: 100%; display: block; }
 }
 
 
-
-
-/* ===== 页面Hero大图 ===== */
-.page-hero-img {
-  width: 100%;
-  margin-top: -72px; 
-  padding: 0;
-  line-height: 0;
-  overflow: hidden;
-  background-color: #0f2540; 
-}
-
-.page-hero-img img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
-  object-fit: cover;
-  max-height: 600px;
-  object-position: center;
-}
-
-@media (max-width: 968px) {
-  .page-hero-img {
-    margin-top: -72px;
-  }
-  .page-hero-img img {
-    max-height: 400px;
-  }
-}
-
-@media (max-width: 640px) {
-  .page-hero-img {
-    margin-top: -60px; 
-  }
-  .page-hero-img img {
-    width: 100%;
-    height: auto;
-    max-height: 240px; 
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-@media (max-width: 380px) {
-  .page-hero-img img {
-    max-height: 200px;
-  }
-}
 /* ===== 关于页门面图布局 ===== */
 .about-layout {
   display: grid;
@@ -834,5 +783,34 @@ img { max-width: 100%; display: block; }
 @media (max-width: 480px) {
   .hero-buttons {
     grid-template-columns: 1fr;
+  }
+}
+/* ===== 终极：公司实力大图修复 ===== */
+.cases-hero {
+  width: 100%;
+  margin-top: 72px; 
+  padding: 0;
+  background-color: #0f2540;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cases-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .cases-hero {
+    margin-top: 60px; 
+  }
+  .cases-hero img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
   }
 }
