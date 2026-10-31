@@ -785,36 +785,14 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }
-/* ===== 终极：公司实力大图修复 ===== */
-.cases-hero {
-  width: 100%;
-  margin-top: 72px; 
-  padding: 0;
-  background-color: #0f2540;
-  overflow: hidden;
-  line-height: 0;
-}
 
-.cases-hero img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 600px;
-  object-fit: cover;
-}
 
-@media (max-width: 640px) {
-  .cases-hero {
-    margin-top: 60px; 
-  }
-  .cases-hero img {
-    width: 100%;
-    height: auto;
-    max-height: 240px;
-    object-fit: cover;
-  }
-}
-/* 强制锁定关于页图片容器，防止塌陷 */
+
+
+
+/* ========================================= */
+/* ===== 关于页门面图 ===== */
+/* ========================================= */
 .about-img-box {
   width: 100% !important;
   height: 380px !important; /* 桌面端固定高度 */
@@ -827,67 +805,41 @@ img { max-width: 100%; display: block; }
   .about-img-box { height: 280px !important; }
 }
 
-/* 彻底解决大图留白与遮挡 */
+/* ========================================= */
+/* ===== 公司实力大图：完美贴合、不留白 ===== */
+/* ========================================= */
+
+/* 1. 占位块：顶开导航栏，颜色与大图背景一致，视觉无缝 */
+.page-top-spacer {
+  height: 72px; /* 电脑端导航栏高度 */
+  background-color: #0f2540;
+}
+
+/* 2. 大图容器：紧贴占位块，清除所有隐藏边距 */
 .cases-hero {
   width: 100%;
-  margin-top: 72px; /* 桌面端导航高度 */
+  margin: 0;
   padding: 0;
-  background-color: #0f2540;
-  overflow: hidden;
   line-height: 0;
-}
-
-@media (max-width: 640px) {
-  .cases-hero {
-    margin-top: 60px; /* 手机端导航高度 */
-  }
-}
-
-/* 手机端大图自适应，防止过高 */
-@media (max-width: 640px) {
-  .cases-hero img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 240px !important; /* 限制最高240px */
-    object-fit: cover;
-  }
-}
-
-
-
-
-
-/* ========================================= */
-/* ===== 终极无敌覆盖：彻底干掉上下留白 ===== */
-/* ========================================= */
-
-.cases-hero {
-  width: 100% !important;
-  margin-top: -72px !important; /* 强力往上顶，穿透一切，贴在导航栏下面 */
-  padding: 0 !important;
-  line-height: 0 !important;
-  font-size: 0 !important; /* 抽干图片下部的隐藏白边 */
+  font-size: 0;
   overflow: hidden;
   background-color: #0f2540;
-  display: block;
-  position: relative;
-  z-index: 1;
 }
 
 .cases-hero img {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 600px !important;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
   object-fit: cover;
   display: block;
 }
 
-/* 手机端单独处理 */
+/* 3. 手机端适配 */
 @media (max-width: 640px) {
-  .cases-hero {
-    margin-top: -60px !important; /* 手机端导航是60px，往上顶60px */
+  .page-top-spacer {
+    height: 60px; /* 手机端导航栏高度 */
   }
   .cases-hero img {
-    max-height: 240px !important; /* 手机端高度限制 */
+    max-height: 240px;
   }
 }
