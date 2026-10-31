@@ -814,3 +814,41 @@ img { max-width: 100%; display: block; }
     object-fit: cover;
   }
 }
+/* 强制锁定关于页图片容器，防止塌陷 */
+.about-img-box {
+  width: 100% !important;
+  height: 380px !important; /* 桌面端固定高度 */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 968px) {
+  .about-img-box { height: 280px !important; }
+}
+
+/* 彻底解决大图留白与遮挡 */
+.cases-hero {
+  width: 100%;
+  margin-top: 72px; /* 桌面端导航高度 */
+  padding: 0;
+  background-color: #0f2540;
+  overflow: hidden;
+  line-height: 0;
+}
+
+@media (max-width: 640px) {
+  .cases-hero {
+    margin-top: 60px; /* 手机端导航高度 */
+  }
+}
+
+/* 手机端大图自适应，防止过高 */
+@media (max-width: 640px) {
+  .cases-hero img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 240px !important; /* 限制最高240px */
+    object-fit: cover;
+  }
+}
