@@ -852,3 +852,42 @@ img { max-width: 100%; display: block; }
     object-fit: cover;
   }
 }
+
+
+
+
+
+/* ========================================= */
+/* ===== 终极无敌覆盖：彻底干掉上下留白 ===== */
+/* ========================================= */
+
+.cases-hero {
+  width: 100% !important;
+  margin-top: -72px !important; /* 强力往上顶，穿透一切，贴在导航栏下面 */
+  padding: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important; /* 抽干图片下部的隐藏白边 */
+  overflow: hidden;
+  background-color: #0f2540;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.cases-hero img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 600px !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* 手机端单独处理 */
+@media (max-width: 640px) {
+  .cases-hero {
+    margin-top: -60px !important; /* 手机端导航是60px，往上顶60px */
+  }
+  .cases-hero img {
+    max-height: 240px !important; /* 手机端高度限制 */
+  }
+}
