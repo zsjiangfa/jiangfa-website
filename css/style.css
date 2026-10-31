@@ -784,12 +784,8 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }.page-hero-img {
-  margin-top: -0px; / 负值上移，正好盖住导航栏的高度 /
+  margin-top: -8px; / 保留这个，负责消除导航栏下方的留白 /
   margin-bottom: 0;
   padding: 0;
   line-height: 0;
-}.page-hero-img img {
-  width: 100%;        / 宽度撑满容器 /
-  height: auto;       / 高度按比例自动计算，不变形 /
-  display: block;     / 去掉图片底部的额外空隙 /
 }
