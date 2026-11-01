@@ -26,7 +26,7 @@ const PRODUCTS = [
   { cat: 'medical', name: '医用推车钣金件', desc: '医用推车车身钣金，不锈钢材质，防锈耐腐蚀', tag: '', img: 'product-7.jpg' },
   { cat: 'cnc', name: 'CNC精密铝合金件', desc: '五轴联动CNC加工，公差可达±0.02mm，铝合金材质', tag: '主推', img: 'product-8.jpg' },
   { cat: 'cnc', name: 'CNC不锈钢加工件', desc: '不锈钢CNC车铣加工，适用于高端设备结构件', tag: '', img: 'product-9.jpg' },
- { cat: 'cnc', name: 'CNC铜件精密加工', desc: '铜材CNC精密加工，导电性好，适用于电子连接器', tag: '' },
+  { cat: 'cnc', name: 'CNC铜件精密加工', desc: '铜材CNC精密加工，导电性好，适用于电子连接器', tag: '' },
   { cat: 'hardware', name: '精密五金冲压件', desc: '五金冲压件，批量生产，一致性好', tag: '' },
   { cat: 'hardware', name: '弹性五金弹片', desc: '不锈钢弹片冲压，弹性好，寿命长', tag: '' },
   { cat: 'hardware', name: '五金连接件', desc: '各类五金连接片、固定片，来图定制', tag: '' },
@@ -58,7 +58,6 @@ const PRODUCTS = [
   { cat: 'metal', name: '金属工具箱', desc: '金属工具箱钣金，定制尺寸，锁扣设计', tag: '' },
   { cat: 'metal', name: '金属通风口盖板', desc: '通风口盖板，冲孔加工，镀锌材质', tag: '' },
 ];
-
 
 // ===== 案例数据 =====
 const CASES = [
@@ -110,8 +109,6 @@ function submitContact(e) {
   e.target.reset();
 }
 
-
-
 // ===== 产品渲染 =====
 function renderProducts(filter, containerId) {
   const container = document.getElementById(containerId);
@@ -119,8 +116,6 @@ function renderProducts(filter, containerId) {
   const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
   container.innerHTML = list.map(p => {
     const idx = PRODUCTS.indexOf(p);
-    
-    // 核心判断：如果数据里有 img 属性，就渲染图片，否则渲染原本的 SVG 占位图
     const imgHtml = p.img 
       ? `<img src="images/${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -142,9 +137,6 @@ function renderProducts(filter, containerId) {
   `;
   }).join('');
 }
-
-
-
 
 function renderTabs(containerId) {
   const container = document.getElementById(containerId);
@@ -196,7 +188,9 @@ function renderNews(containerId) {
       </div>
     `;
   }).join('');
-}// ===== 产品详情页渲染 =====
+}
+
+// ===== 产品详情页渲染 =====
 function renderProductDetail(productId) {
   const idx = parseInt(productId);
   if (isNaN(idx) || idx < 0 || idx >= PRODUCTS.length) {
@@ -215,8 +209,6 @@ function renderProductDetail(productId) {
   const related = PRODUCTS.filter((item, i) => item.cat === p.cat && i !== idx).slice(0, 3);
   document.getElementById('relatedProducts').innerHTML = related.map((item, i) => {
     const relIdx = PRODUCTS.indexOf(item);
-    
-    // 判断相关推荐是否有图片
     const imgHtml = item.img 
       ? `<img src="images/${item.img}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
