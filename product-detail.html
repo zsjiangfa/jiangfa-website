@@ -71,6 +71,70 @@
     .detail-layout { grid-template-columns: 1fr; gap: 32px; }
     .detail-img-box { height: 300px; }
   }
+
+
+  /* 产品细节图样式 */
+  .detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .gallery-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .gallery-img {
+    width: 100%;
+    height: 120px;
+    background: #f5f7fa;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+    font-size: 12px;
+    gap: 6px;
+  }
+  .gallery-placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
+  .gallery-item h4 {
+    font-size: 14px;
+    color: var(--primary);
+    padding: 12px 12px 4px;
+    margin: 0;
+  }
+  .gallery-item p {
+    font-size: 12px;
+    color: var(--gray);
+    padding: 0 12px 12px;
+    margin: 0;
+    line-height: 1.5;
+  }
+  @media (max-width: 968px) {
+    .detail-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .detail-gallery { grid-template-columns: 1fr; }
+    .gallery-img { height: 160px; }
+  }
+
+
 </style>
 </head>
 <body>
@@ -132,7 +196,51 @@
             <li contenteditable="true">快速交付，珠三角可送货上门</li>
           </ul>
         </div>
-        <a href="contact.html" class="btn-primary" style="background:var(--accent);color:white;">立即咨询报价</a>
+                <!-- ================= 产品细节展示区 ================= -->
+        <div class="detail-gallery">
+          <!-- 细节图 1 -->
+          <div class="gallery-item">
+            <div class="gallery-img">
+              <img src="images/detail-1.jpg" alt="裁床设备机座框架-焊接工艺细节" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <!-- 找不到图片时显示的占位符 -->
+              <div class="gallery-placeholder" style="display:none;">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                 <span>替换细节图1</span>
+              </div>
+            </div>
+            <h4>高精度孔位加工</h4>
+            <p>采用德国通快激光切割，孔位公差控制在±0.1mm以内，确保后期装配无缝衔接。</p>
+          </div>
+
+          <!-- 细节图 2 -->
+          <div class="gallery-item">
+            <div class="gallery-img">
+              <img src="images/detail-2.jpg" alt="裁床设备机座框架-表面处理细节" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="gallery-placeholder" style="display:none;">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                 <span>替换细节图2</span>
+              </div>
+            </div>
+            <h4>加厚型材焊接</h4>
+            <p>采用双轴机械手自动焊接工艺，焊缝平整美观，承重能力大幅提升，不易变形。</p>
+          </div>
+
+          <!-- 细节图 3 -->
+          <div class="gallery-item">
+            <div class="gallery-img">
+              <img src="images/detail-3.jpg" alt="裁床设备机座框架-烤漆处理细节" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="gallery-placeholder" style="display:none;">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                 <span>替换细节图3</span>
+              </div>
+            </div>
+            <h4>环保静电烤漆</h4>
+            <p>表面经过除油除锈处理后静电喷涂烤漆，漆面附着力强，防锈耐腐蚀，美观耐用。</p>
+          </div>
+        </div>
+        <!-- ================= 细节展示区结束 ================= -->
+
+        <a href="contact.html" class="btn-primary" style="background:var(--accent);color:white; margin-top: 20px;">立即咨询报价</a>
       </div>
     </div>
 
