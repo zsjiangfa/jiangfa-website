@@ -196,9 +196,7 @@ function renderNews(containerId) {
       </div>
     `;
   }).join('');
-}
-
-// ===== 产品详情页渲染 =====
+}// ===== 产品详情页渲染 =====
 function renderProductDetail(productId) {
   const idx = parseInt(productId);
   if (isNaN(idx) || idx < 0 || idx >= PRODUCTS.length) {
@@ -213,7 +211,7 @@ function renderProductDetail(productId) {
   document.getElementById('detailDesc').textContent = p.desc;
   document.getElementById('detailTag').textContent = p.tag || '定制产品';
 
- // 相关推荐（同分类的其他产品）
+  // 相关推荐（同分类的其他产品）
   const related = PRODUCTS.filter((item, i) => item.cat === p.cat && i !== idx).slice(0, 3);
   document.getElementById('relatedProducts').innerHTML = related.map((item, i) => {
     const relIdx = PRODUCTS.indexOf(item);
@@ -238,7 +236,8 @@ function renderProductDetail(productId) {
         </div>
       </div>
     `;
-  }).join('');}
+  }).join('');
+}
 
 // ===== 获取URL参数 =====
 function getUrlParam(name) {
