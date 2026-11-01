@@ -205,22 +205,33 @@ function renderProductDetail(productId) {
   document.getElementById('detailDesc').textContent = p.desc;
   document.getElementById('detailTag').textContent = p.tag || '定制产品';
 
+  // ★ 核心：自动关联大图 ★
+  const imgContainer = document.getElementById('detailImgContainer');
+  if (imgContainer) {
+    const imgHtml = p.img 
+      ? `<img src="images/${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:120px; height:120px; opacity:0.3;">
+           <rect x="3" y="3" width="18" height="18" rx="2"/>
+           <path d="M3 9h18M9 21V9"/>
+         </svg>`;
+    imgContainer.innerHTML = `<span class="detail-tag-badge" id="detailTag">${p.tag || '定制产品'}</span>${imgHtml}`;
+  }
+
   // 相关推荐（同分类的其他产品）
   const related = PRODUCTS.filter((item, i) => item.cat === p.cat && i !== idx).slice(0, 3);
   document.getElementById('relatedProducts').innerHTML = related.map((item, i) => {
     const relIdx = PRODUCTS.indexOf(item);
-    const imgHtml = item.img 
+    const relImgHtml = item.img 
       ? `<img src="images/${item.img}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
            <rect x="3" y="3" width="18" height="18" rx="2"/>
            <path d="M3 9h18M9 21V9"/>
          </svg>`;
-
     return `
       <div class="product-card" onclick="location.href='product-detail.html?id=${relIdx}'">
         <div class="product-img">
           ${item.tag ? '<span class="product-tag">' + item.tag + '</span>' : ''}
-          ${imgHtml}
+          ${relImgHtml}
         </div>
         <div class="product-info">
           <h3>${item.name}</h3>
@@ -230,6 +241,8 @@ function renderProductDetail(productId) {
     `;
   }).join('');
 }
+
+
 
 // ===== 获取URL参数 =====
 function getUrlParam(name) {
