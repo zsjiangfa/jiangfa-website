@@ -58,7 +58,7 @@ const PRODUCTS = [
   { cat: 'metal', name: '金属工具箱', desc: '金属工具箱钣金，定制尺寸，锁扣设计', tag: '' },
   { cat: 'metal', name: '金属通风口盖板', desc: '通风口盖板，冲孔加工，镀锌材质', tag: '' },
 ];
-];
+
 
 // ===== 案例数据 =====
 const CASES = [
@@ -213,18 +213,24 @@ function renderProductDetail(productId) {
   document.getElementById('detailDesc').textContent = p.desc;
   document.getElementById('detailTag').textContent = p.tag || '定制产品';
 
-  // 相关推荐（同分类的其他产品）
+ // 相关推荐（同分类的其他产品）
   const related = PRODUCTS.filter((item, i) => item.cat === p.cat && i !== idx).slice(0, 3);
   document.getElementById('relatedProducts').innerHTML = related.map((item, i) => {
     const relIdx = PRODUCTS.indexOf(item);
+    
+    // 判断相关推荐是否有图片
+    const imgHtml = item.img 
+      ? `<img src="images/${item.img}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="3" y="3" width="18" height="18" rx="2"/>
+           <path d="M3 9h18M9 21V9"/>
+         </svg>`;
+
     return `
       <div class="product-card" onclick="location.href='product-detail.html?id=${relIdx}'">
         <div class="product-img">
           ${item.tag ? '<span class="product-tag">' + item.tag + '</span>' : ''}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18M9 21V9"/>
-          </svg>
+          ${imgHtml}
         </div>
         <div class="product-info">
           <h3>${item.name}</h3>
@@ -232,8 +238,7 @@ function renderProductDetail(productId) {
         </div>
       </div>
     `;
-  }).join('');
-}
+  }).join('');}
 
 // ===== 获取URL参数 =====
 function getUrlParam(name) {
