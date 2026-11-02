@@ -1,6 +1,4 @@
-﻿
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -9,82 +7,67 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff6b35'/><text x='50' y='68' font-size='50' font-weight='bold' text-anchor="middle" fill="white" font-family="sans-serif">JF</text></svg>">
 <link rel="stylesheet" href="css/style.css">
 <style>
+  /* 详情页整体排版 */
   .detail-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 60px;
     align-items: start;
   }
   .detail-img-box {
-    height: 400px;
+    flex: 1;
+    min-width: 300px; /* 兼容微信 */
+    height: 450px;
     background: linear-gradient(135deg, #e8eef5, #d5e0ed);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
   }
-  .detail-img-box svg { width: 120px; height: 120px; opacity: 0.3; }
+  .detail-info {
+    flex: 1;
+    min-width: 300px; /* 兼容微信 */
+  }
   .detail-tag-badge {
-    position: absolute; top: 20px; left: 20px;
+    position: absolute; top: 20px; left: 20px; z-index: 2;
     background: var(--accent); color: var(--white);
     padding: 6px 16px; border-radius: 6px; font-size: 14px;
   }
-  .detail-info h1 {
-    font-size: 32px; color: var(--primary); margin-bottom: 12px;
-  }
+  .detail-info h1 { font-size: 32px; color: var(--primary); margin-bottom: 12px; }
   .detail-info .category {
-    display: inline-block;
-    color: var(--accent); font-size: 14px; font-weight: 600;
-    margin-bottom: 20px;
+    display: inline-block; color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 20px;
   }
-  .detail-info .desc {
-    font-size: 16px; color: var(--gray); line-height: 1.8;
-    margin-bottom: 32px;
-  }
+  .detail-info .desc { font-size: 16px; color: var(--gray); line-height: 1.8; margin-bottom: 32px; }
   .detail-features {
-    background: var(--light); border-radius: 12px; padding: 24px;
-    margin-bottom: 32px;
+    background: var(--light); border-radius: 12px; padding: 24px; margin-bottom: 32px;
   }
-  .detail-features h4 {
-    font-size: 15px; color: var(--primary); margin-bottom: 16px;
-  }
+  .detail-features h4 { font-size: 15px; color: var(--primary); margin-bottom: 16px; }
   .detail-features ul li {
-    padding: 8px 0;
-    font-size: 14px; color: var(--text);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 8px;
+    padding: 8px 0; font-size: 14px; color: var(--text);
+    border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
   }
   .detail-features ul li:last-child { border-bottom: none; }
-  .detail-features ul li::before {
-    content: '✓'; color: var(--accent); font-weight: bold;
-  }
+  .detail-features ul li::before { content: '✓'; color: var(--accent); font-weight: bold; }
   .edit-hint {
-    background: #fff8e6;
-    border: 1px solid #ffe0a3;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: #8a6d3b;
-    margin-bottom: 24px;
-  }
-  @media (max-width: 968px) {
-    .detail-layout { grid-template-columns: 1fr; gap: 32px; }
-    .detail-img-box { height: 300px; }
+    background: #fff8e6; border: 1px solid #ffe0a3; border-radius: 8px;
+    padding: 12px 16px; font-size: 13px; color: #8a6d3b; margin-bottom: 24px;
   }
 
-
-  /* 全宽细节展示区样式 */
+  /* ===== 细节图大图样式（微信完美兼容版） ===== */
   .detail-gallery-section {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 80px; /* 和上面拉开距离 */
   }
   .detail-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 24px;
   }
   .gallery-item {
+    flex: 1;
+    min-width: 300px; /* 微信端会自动变成竖排 */
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -96,13 +79,16 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   }
+  
+  /* ★ 这里是你要的大图：高度 400px ★ */
   .gallery-img {
     width: 100%;
-    height: 400px;
+    height: 400px; 
     background: #f5f7fa;
     position: relative;
     overflow: hidden;
   }
+  
   .gallery-img img {
     width: 100%;
     height: 100%;
@@ -110,43 +96,25 @@
     display: block;
     transition: transform 0.3s;
   }
-  .gallery-item:hover .gallery-img img {
-    transform: scale(1.05);
-  }
+  .gallery-item:hover .gallery-img img { transform: scale(1.05); }
   .gallery-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #a0aec0;
-    font-size: 14px;
-    gap: 10px;
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #a0aec0; font-size: 14px; gap: 10px;
   }
   .gallery-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
-  .gallery-item h4 {
-    font-size: 17px;
-    color: var(--primary);
-    padding: 16px 16px 8px;
-    margin: 0;
-  }
-  .gallery-item p {
-    font-size: 14px;
-    color: var(--gray);
-    padding: 0 16px 16px;
-    margin: 0;
-    line-height: 1.6;
-  }
+  .gallery-item h4 { font-size: 18px; color: var(--primary); padding: 16px 16px 8px; margin: 0; }
+  .gallery-item p { font-size: 15px; color: var(--gray); padding: 0 16px 16px; margin: 0; line-height: 1.6; }
+
+  /* 手机/平板自适应 */
   @media (max-width: 968px) {
-    .detail-gallery { grid-template-columns: repeat(2, 1fr); }
+    .detail-layout { gap: 32px; }
+    .detail-img-box { height: 300px; min-width: 100%; }
+    .detail-info { min-width: 100%; }
+    .gallery-img { height: 280px; }
   }
   @media (max-width: 640px) {
-    .detail-gallery { grid-template-columns: 1fr; }
-    .gallery-img { height: 220px; }
+    .gallery-img { height: 250px; }
   }
-
-
 </style>
 </head>
 <body>
@@ -186,14 +154,18 @@
     <div class="edit-hint">
       提示：本页面文字均可直接点击编辑，修改后保存HTML文件即可生效。
     </div>
+    
+    <!-- 上半部分：左图右文 -->
     <div class="detail-layout">
+      <!-- 左侧大图 -->
       <div class="detail-img-box" id="detailImgContainer">
         <span class="detail-tag-badge" id="detailTag">定制产品</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <path d="M3 9h18M9 21V9"/>
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
         </svg>
       </div>
+      
+      <!-- 右侧文字信息 -->
       <div class="detail-info">
         <h1 contenteditable="true" id="detailTitle2">产品名称</h1>
         <span class="category" contenteditable="true">产品分类</span>
@@ -208,17 +180,13 @@
             <li contenteditable="true">快速交付，珠三角可送货上门</li>
           </ul>
         </div>
+        <a href="contact.html" class="btn-primary" style="background:var(--accent);color:white; display:inline-block;">立即咨询报价</a>
+      </div>
+    </div>
 
-      
-        <!-- 加上这个咨询按钮 -->
-        <a href="contact.html" class="btn-primary" style="background:var(--accent);color:white; display:inline-block; margin-bottom:20px;">立即咨询报价</a>
-      </div> <!-- ★ 关键：加上这个闭合标签，结束右侧的信息框 -->
-    </div> <!-- ★ 关键：加上这个闭合标签，结束上方的左图右文布局 -->
-
-
-    <!-- ================= 全新：细节展示区（全宽放在下方） ================= -->
+    <!-- 下半部分：独立出来的细节展示区 -->
     <div class="detail-gallery-section">
-      <div class="section-header" style="text-align: left; margin-bottom: 24px; margin-top: 60px;">
+      <div class="section-header" style="text-align: left; margin-bottom: 24px;">
         <div class="tag">DETAILS</div>
         <h2 style="font-size: 24px;">产品细节展示</h2>
       </div>
@@ -227,7 +195,7 @@
         <!-- 细节图 1 -->
         <div class="gallery-item">
           <div class="gallery-img">
-            <img src="images/detail-1.jpg" alt="裁床设备机座框架-高精度孔位加工" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/detail-1.jpg" alt="高精度孔位加工" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="gallery-placeholder" style="display:none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               <span>替换细节图1</span>
@@ -240,7 +208,7 @@
         <!-- 细节图 2 -->
         <div class="gallery-item">
           <div class="gallery-img">
-            <img src="images/detail-2.jpg" alt="裁床设备机座框架-加厚型材焊接" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/detail-2.jpg" alt="加厚型材焊接" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="gallery-placeholder" style="display:none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               <span>替换细节图2</span>
@@ -253,7 +221,7 @@
         <!-- 细节图 3 -->
         <div class="gallery-item">
           <div class="gallery-img">
-            <img src="images/detail-3.jpg" alt="裁床设备机座框架-环保静电烤漆" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/detail-3.jpg" alt="环保静电烤漆" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="gallery-placeholder" style="display:none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               <span>替换细节图3</span>
@@ -264,11 +232,6 @@
         </div>
       </div>
     </div>
-    <!-- ================= 细节展示区结束 ================= -->
-
-
-
-
 
     <!-- 相关推荐 -->
     <div style="margin-top: 80px;">
@@ -278,6 +241,7 @@
       </div>
       <div class="product-grid" id="relatedProducts"></div>
     </div>
+    
   </div>
 </section>
 
